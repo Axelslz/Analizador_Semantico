@@ -1,0 +1,20 @@
+int $numero = 10;
+
+func suma(int $a, int $b){
+        imprimir($a + $b);
+}
+
+repetir (int $i = 0; $i < 10; $i++;) {
+        imprimir($i);
+}
+
+#no deja recibir mas de una palabra al imprimir
+si ($numero > 5) {
+        imprimir(mayor);
+    } sino {
+        imprimir(menor);
+}
+
+func main(){
+imprimir(juan);
+}

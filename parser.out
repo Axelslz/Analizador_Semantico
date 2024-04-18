@@ -1,0 +1,1240 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    STRING
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement_list
+Rule 2     statement_list -> statement_list statement
+Rule 3     statement_list -> statement
+Rule 4     statement -> var_decl
+Rule 5     statement -> echo_statement
+Rule 6     statement -> function_decl
+Rule 7     statement -> repeat_statement
+Rule 8     statement -> if_statement
+Rule 9     statement -> return_statement
+Rule 10    var_decl -> INT IDENTIFIER EQUALS expression SEMICOLON
+Rule 11    echo_statement -> ECHO LPAREN expression RPAREN SEMICOLON
+Rule 12    function_decl -> FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE
+Rule 13    opt_param_list -> param_list
+Rule 14    opt_param_list -> empty
+Rule 15    param_list -> param_list COMMA INT IDENTIFIER
+Rule 16    param_list -> INT IDENTIFIER
+Rule 17    repeat_statement -> REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE
+Rule 18    condition -> expression
+Rule 19    increment -> IDENTIFIER PLUS PLUS SEMICOLON
+Rule 20    if_statement -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else
+Rule 21    opt_else -> ELSE LBRACE statement_list RBRACE
+Rule 22    opt_else -> empty
+Rule 23    return_statement -> RETURN expression SEMICOLON
+Rule 24    empty -> <empty>
+Rule 25    expression -> expression PLUS expression
+Rule 26    expression -> expression MINUS expression
+Rule 27    expression -> expression MORE expression
+Rule 28    expression -> expression LESS expression
+Rule 29    expression -> NUMBER
+Rule 30    expression -> IDENTIFIER
+
+Terminals, with rules where they appear
+
+COMMA                : 15
+ECHO                 : 11
+ELSE                 : 21
+EQUALS               : 10
+FUNC                 : 12
+IDENTIFIER           : 10 12 15 16 19 30
+IF                   : 20
+INT                  : 10 15 16
+LBRACE               : 12 17 20 21
+LESS                 : 28
+LPAREN               : 11 12 17 20
+MINUS                : 26
+MORE                 : 27
+NUMBER               : 29
+PLUS                 : 19 19 25
+RBRACE               : 12 17 20 21
+REPEAT               : 17
+RETURN               : 23
+RPAREN               : 11 12 17 20
+SEMICOLON            : 10 11 17 19 23
+STRING               : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+condition            : 
+echo_statement       : 5
+empty                : 14 22
+expression           : 10 11 17 18 20 23 25 25 26 26 27 27 28 28
+function_decl        : 6
+if_statement         : 8
+increment            : 17
+opt_else             : 20
+opt_param_list       : 12
+param_list           : 13 15
+program              : 0
+repeat_statement     : 7
+return_statement     : 9
+statement            : 2 3
+statement_list       : 1 2 12 17 20 21
+var_decl             : 4 17
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement_list
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (4) statement -> . var_decl
+    (5) statement -> . echo_statement
+    (6) statement -> . function_decl
+    (7) statement -> . repeat_statement
+    (8) statement -> . if_statement
+    (9) statement -> . return_statement
+    (10) var_decl -> . INT IDENTIFIER EQUALS expression SEMICOLON
+    (11) echo_statement -> . ECHO LPAREN expression RPAREN SEMICOLON
+    (12) function_decl -> . FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE
+    (17) repeat_statement -> . REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE
+    (20) if_statement -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else
+    (23) return_statement -> . RETURN expression SEMICOLON
+
+    INT             shift and go to state 10
+    ECHO            shift and go to state 11
+    FUNC            shift and go to state 12
+    REPEAT          shift and go to state 13
+    IF              shift and go to state 14
+    RETURN          shift and go to state 15
+
+    program                        shift and go to state 1
+    statement_list                 shift and go to state 2
+    statement                      shift and go to state 3
+    var_decl                       shift and go to state 4
+    echo_statement                 shift and go to state 5
+    function_decl                  shift and go to state 6
+    repeat_statement               shift and go to state 7
+    if_statement                   shift and go to state 8
+    return_statement               shift and go to state 9
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement_list .
+    (2) statement_list -> statement_list . statement
+    (4) statement -> . var_decl
+    (5) statement -> . echo_statement
+    (6) statement -> . function_decl
+    (7) statement -> . repeat_statement
+    (8) statement -> . if_statement
+    (9) statement -> . return_statement
+    (10) var_decl -> . INT IDENTIFIER EQUALS expression SEMICOLON
+    (11) echo_statement -> . ECHO LPAREN expression RPAREN SEMICOLON
+    (12) function_decl -> . FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE
+    (17) repeat_statement -> . REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE
+    (20) if_statement -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else
+    (23) return_statement -> . RETURN expression SEMICOLON
+
+    $end            reduce using rule 1 (program -> statement_list .)
+    INT             shift and go to state 10
+    ECHO            shift and go to state 11
+    FUNC            shift and go to state 12
+    REPEAT          shift and go to state 13
+    IF              shift and go to state 14
+    RETURN          shift and go to state 15
+
+    statement                      shift and go to state 16
+    var_decl                       shift and go to state 4
+    echo_statement                 shift and go to state 5
+    function_decl                  shift and go to state 6
+    repeat_statement               shift and go to state 7
+    if_statement                   shift and go to state 8
+    return_statement               shift and go to state 9
+
+state 3
+
+    (3) statement_list -> statement .
+
+    INT             reduce using rule 3 (statement_list -> statement .)
+    ECHO            reduce using rule 3 (statement_list -> statement .)
+    FUNC            reduce using rule 3 (statement_list -> statement .)
+    REPEAT          reduce using rule 3 (statement_list -> statement .)
+    IF              reduce using rule 3 (statement_list -> statement .)
+    RETURN          reduce using rule 3 (statement_list -> statement .)
+    $end            reduce using rule 3 (statement_list -> statement .)
+    RBRACE          reduce using rule 3 (statement_list -> statement .)
+
+
+state 4
+
+    (4) statement -> var_decl .
+
+    INT             reduce using rule 4 (statement -> var_decl .)
+    ECHO            reduce using rule 4 (statement -> var_decl .)
+    FUNC            reduce using rule 4 (statement -> var_decl .)
+    REPEAT          reduce using rule 4 (statement -> var_decl .)
+    IF              reduce using rule 4 (statement -> var_decl .)
+    RETURN          reduce using rule 4 (statement -> var_decl .)
+    $end            reduce using rule 4 (statement -> var_decl .)
+    RBRACE          reduce using rule 4 (statement -> var_decl .)
+
+
+state 5
+
+    (5) statement -> echo_statement .
+
+    INT             reduce using rule 5 (statement -> echo_statement .)
+    ECHO            reduce using rule 5 (statement -> echo_statement .)
+    FUNC            reduce using rule 5 (statement -> echo_statement .)
+    REPEAT          reduce using rule 5 (statement -> echo_statement .)
+    IF              reduce using rule 5 (statement -> echo_statement .)
+    RETURN          reduce using rule 5 (statement -> echo_statement .)
+    $end            reduce using rule 5 (statement -> echo_statement .)
+    RBRACE          reduce using rule 5 (statement -> echo_statement .)
+
+
+state 6
+
+    (6) statement -> function_decl .
+
+    INT             reduce using rule 6 (statement -> function_decl .)
+    ECHO            reduce using rule 6 (statement -> function_decl .)
+    FUNC            reduce using rule 6 (statement -> function_decl .)
+    REPEAT          reduce using rule 6 (statement -> function_decl .)
+    IF              reduce using rule 6 (statement -> function_decl .)
+    RETURN          reduce using rule 6 (statement -> function_decl .)
+    $end            reduce using rule 6 (statement -> function_decl .)
+    RBRACE          reduce using rule 6 (statement -> function_decl .)
+
+
+state 7
+
+    (7) statement -> repeat_statement .
+
+    INT             reduce using rule 7 (statement -> repeat_statement .)
+    ECHO            reduce using rule 7 (statement -> repeat_statement .)
+    FUNC            reduce using rule 7 (statement -> repeat_statement .)
+    REPEAT          reduce using rule 7 (statement -> repeat_statement .)
+    IF              reduce using rule 7 (statement -> repeat_statement .)
+    RETURN          reduce using rule 7 (statement -> repeat_statement .)
+    $end            reduce using rule 7 (statement -> repeat_statement .)
+    RBRACE          reduce using rule 7 (statement -> repeat_statement .)
+
+
+state 8
+
+    (8) statement -> if_statement .
+
+    INT             reduce using rule 8 (statement -> if_statement .)
+    ECHO            reduce using rule 8 (statement -> if_statement .)
+    FUNC            reduce using rule 8 (statement -> if_statement .)
+    REPEAT          reduce using rule 8 (statement -> if_statement .)
+    IF              reduce using rule 8 (statement -> if_statement .)
+    RETURN          reduce using rule 8 (statement -> if_statement .)
+    $end            reduce using rule 8 (statement -> if_statement .)
+    RBRACE          reduce using rule 8 (statement -> if_statement .)
+
+
+state 9
+
+    (9) statement -> return_statement .
+
+    INT             reduce using rule 9 (statement -> return_statement .)
+    ECHO            reduce using rule 9 (statement -> return_statement .)
+    FUNC            reduce using rule 9 (statement -> return_statement .)
+    REPEAT          reduce using rule 9 (statement -> return_statement .)
+    IF              reduce using rule 9 (statement -> return_statement .)
+    RETURN          reduce using rule 9 (statement -> return_statement .)
+    $end            reduce using rule 9 (statement -> return_statement .)
+    RBRACE          reduce using rule 9 (statement -> return_statement .)
+
+
+state 10
+
+    (10) var_decl -> INT . IDENTIFIER EQUALS expression SEMICOLON
+
+    IDENTIFIER      shift and go to state 17
+
+
+state 11
+
+    (11) echo_statement -> ECHO . LPAREN expression RPAREN SEMICOLON
+
+    LPAREN          shift and go to state 18
+
+
+state 12
+
+    (12) function_decl -> FUNC . IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE
+
+    IDENTIFIER      shift and go to state 19
+
+
+state 13
+
+    (17) repeat_statement -> REPEAT . LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE
+
+    LPAREN          shift and go to state 20
+
+
+state 14
+
+    (20) if_statement -> IF . LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else
+
+    LPAREN          shift and go to state 21
+
+
+state 15
+
+    (23) return_statement -> RETURN . expression SEMICOLON
+    (25) expression -> . expression PLUS expression
+    (26) expression -> . expression MINUS expression
+    (27) expression -> . expression MORE expression
+    (28) expression -> . expression LESS expression
+    (29) expression -> . NUMBER
+    (30) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 23
+    IDENTIFIER      shift and go to state 24
+
+    expression                     shift and go to state 22
+
+state 16
+
+    (2) statement_list -> statement_list statement .
+
+    INT             reduce using rule 2 (statement_list -> statement_list statement .)
+    ECHO            reduce using rule 2 (statement_list -> statement_list statement .)
+    FUNC            reduce using rule 2 (statement_list -> statement_list statement .)
+    REPEAT          reduce using rule 2 (statement_list -> statement_list statement .)
+    IF              reduce using rule 2 (statement_list -> statement_list statement .)
+    RETURN          reduce using rule 2 (statement_list -> statement_list statement .)
+    $end            reduce using rule 2 (statement_list -> statement_list statement .)
+    RBRACE          reduce using rule 2 (statement_list -> statement_list statement .)
+
+
+state 17
+
+    (10) var_decl -> INT IDENTIFIER . EQUALS expression SEMICOLON
+
+    EQUALS          shift and go to state 25
+
+
+state 18
+
+    (11) echo_statement -> ECHO LPAREN . expression RPAREN SEMICOLON
+    (25) expression -> . expression PLUS expression
+    (26) expression -> . expression MINUS expression
+    (27) expression -> . expression MORE expression
+    (28) expression -> . expression LESS expression
+    (29) expression -> . NUMBER
+    (30) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 23
+    IDENTIFIER      shift and go to state 24
+
+    expression                     shift and go to state 26
+
+state 19
+
+    (12) function_decl -> FUNC IDENTIFIER . LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE
+
+    LPAREN          shift and go to state 27
+
+
+state 20
+
+    (17) repeat_statement -> REPEAT LPAREN . var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE
+    (10) var_decl -> . INT IDENTIFIER EQUALS expression SEMICOLON
+
+    INT             shift and go to state 10
+
+    var_decl                       shift and go to state 28
+
+state 21
+
+    (20) if_statement -> IF LPAREN . expression RPAREN LBRACE statement_list RBRACE opt_else
+    (25) expression -> . expression PLUS expression
+    (26) expression -> . expression MINUS expression
+    (27) expression -> . expression MORE expression
+    (28) expression -> . expression LESS expression
+    (29) expression -> . NUMBER
+    (30) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 23
+    IDENTIFIER      shift and go to state 24
+
+    expression                     shift and go to state 29
+
+state 22
+
+    (23) return_statement -> RETURN expression . SEMICOLON
+    (25) expression -> expression . PLUS expression
+    (26) expression -> expression . MINUS expression
+    (27) expression -> expression . MORE expression
+    (28) expression -> expression . LESS expression
+
+    SEMICOLON       shift and go to state 30
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    MORE            shift and go to state 33
+    LESS            shift and go to state 34
+
+
+state 23
+
+    (29) expression -> NUMBER .
+
+    SEMICOLON       reduce using rule 29 (expression -> NUMBER .)
+    PLUS            reduce using rule 29 (expression -> NUMBER .)
+    MINUS           reduce using rule 29 (expression -> NUMBER .)
+    MORE            reduce using rule 29 (expression -> NUMBER .)
+    LESS            reduce using rule 29 (expression -> NUMBER .)
+    RPAREN          reduce using rule 29 (expression -> NUMBER .)
+
+
+state 24
+
+    (30) expression -> IDENTIFIER .
+
+    SEMICOLON       reduce using rule 30 (expression -> IDENTIFIER .)
+    PLUS            reduce using rule 30 (expression -> IDENTIFIER .)
+    MINUS           reduce using rule 30 (expression -> IDENTIFIER .)
+    MORE            reduce using rule 30 (expression -> IDENTIFIER .)
+    LESS            reduce using rule 30 (expression -> IDENTIFIER .)
+    RPAREN          reduce using rule 30 (expression -> IDENTIFIER .)
+
+
+state 25
+
+    (10) var_decl -> INT IDENTIFIER EQUALS . expression SEMICOLON
+    (25) expression -> . expression PLUS expression
+    (26) expression -> . expression MINUS expression
+    (27) expression -> . expression MORE expression
+    (28) expression -> . expression LESS expression
+    (29) expression -> . NUMBER
+    (30) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 23
+    IDENTIFIER      shift and go to state 24
+
+    expression                     shift and go to state 35
+
+state 26
+
+    (11) echo_statement -> ECHO LPAREN expression . RPAREN SEMICOLON
+    (25) expression -> expression . PLUS expression
+    (26) expression -> expression . MINUS expression
+    (27) expression -> expression . MORE expression
+    (28) expression -> expression . LESS expression
+
+    RPAREN          shift and go to state 36
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    MORE            shift and go to state 33
+    LESS            shift and go to state 34
+
+
+state 27
+
+    (12) function_decl -> FUNC IDENTIFIER LPAREN . opt_param_list RPAREN LBRACE statement_list RBRACE
+    (13) opt_param_list -> . param_list
+    (14) opt_param_list -> . empty
+    (15) param_list -> . param_list COMMA INT IDENTIFIER
+    (16) param_list -> . INT IDENTIFIER
+    (24) empty -> .
+
+    INT             shift and go to state 40
+    RPAREN          reduce using rule 24 (empty -> .)
+
+    opt_param_list                 shift and go to state 37
+    param_list                     shift and go to state 38
+    empty                          shift and go to state 39
+
+state 28
+
+    (17) repeat_statement -> REPEAT LPAREN var_decl . expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE
+    (25) expression -> . expression PLUS expression
+    (26) expression -> . expression MINUS expression
+    (27) expression -> . expression MORE expression
+    (28) expression -> . expression LESS expression
+    (29) expression -> . NUMBER
+    (30) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 23
+    IDENTIFIER      shift and go to state 24
+
+    expression                     shift and go to state 41
+
+state 29
+
+    (20) if_statement -> IF LPAREN expression . RPAREN LBRACE statement_list RBRACE opt_else
+    (25) expression -> expression . PLUS expression
+    (26) expression -> expression . MINUS expression
+    (27) expression -> expression . MORE expression
+    (28) expression -> expression . LESS expression
+
+    RPAREN          shift and go to state 42
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    MORE            shift and go to state 33
+    LESS            shift and go to state 34
+
+
+state 30
+
+    (23) return_statement -> RETURN expression SEMICOLON .
+
+    INT             reduce using rule 23 (return_statement -> RETURN expression SEMICOLON .)
+    ECHO            reduce using rule 23 (return_statement -> RETURN expression SEMICOLON .)
+    FUNC            reduce using rule 23 (return_statement -> RETURN expression SEMICOLON .)
+    REPEAT          reduce using rule 23 (return_statement -> RETURN expression SEMICOLON .)
+    IF              reduce using rule 23 (return_statement -> RETURN expression SEMICOLON .)
+    RETURN          reduce using rule 23 (return_statement -> RETURN expression SEMICOLON .)
+    $end            reduce using rule 23 (return_statement -> RETURN expression SEMICOLON .)
+    RBRACE          reduce using rule 23 (return_statement -> RETURN expression SEMICOLON .)
+
+
+state 31
+
+    (25) expression -> expression PLUS . expression
+    (25) expression -> . expression PLUS expression
+    (26) expression -> . expression MINUS expression
+    (27) expression -> . expression MORE expression
+    (28) expression -> . expression LESS expression
+    (29) expression -> . NUMBER
+    (30) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 23
+    IDENTIFIER      shift and go to state 24
+
+    expression                     shift and go to state 43
+
+state 32
+
+    (26) expression -> expression MINUS . expression
+    (25) expression -> . expression PLUS expression
+    (26) expression -> . expression MINUS expression
+    (27) expression -> . expression MORE expression
+    (28) expression -> . expression LESS expression
+    (29) expression -> . NUMBER
+    (30) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 23
+    IDENTIFIER      shift and go to state 24
+
+    expression                     shift and go to state 44
+
+state 33
+
+    (27) expression -> expression MORE . expression
+    (25) expression -> . expression PLUS expression
+    (26) expression -> . expression MINUS expression
+    (27) expression -> . expression MORE expression
+    (28) expression -> . expression LESS expression
+    (29) expression -> . NUMBER
+    (30) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 23
+    IDENTIFIER      shift and go to state 24
+
+    expression                     shift and go to state 45
+
+state 34
+
+    (28) expression -> expression LESS . expression
+    (25) expression -> . expression PLUS expression
+    (26) expression -> . expression MINUS expression
+    (27) expression -> . expression MORE expression
+    (28) expression -> . expression LESS expression
+    (29) expression -> . NUMBER
+    (30) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 23
+    IDENTIFIER      shift and go to state 24
+
+    expression                     shift and go to state 46
+
+state 35
+
+    (10) var_decl -> INT IDENTIFIER EQUALS expression . SEMICOLON
+    (25) expression -> expression . PLUS expression
+    (26) expression -> expression . MINUS expression
+    (27) expression -> expression . MORE expression
+    (28) expression -> expression . LESS expression
+
+    SEMICOLON       shift and go to state 47
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    MORE            shift and go to state 33
+    LESS            shift and go to state 34
+
+
+state 36
+
+    (11) echo_statement -> ECHO LPAREN expression RPAREN . SEMICOLON
+
+    SEMICOLON       shift and go to state 48
+
+
+state 37
+
+    (12) function_decl -> FUNC IDENTIFIER LPAREN opt_param_list . RPAREN LBRACE statement_list RBRACE
+
+    RPAREN          shift and go to state 49
+
+
+state 38
+
+    (13) opt_param_list -> param_list .
+    (15) param_list -> param_list . COMMA INT IDENTIFIER
+
+    RPAREN          reduce using rule 13 (opt_param_list -> param_list .)
+    COMMA           shift and go to state 50
+
+
+state 39
+
+    (14) opt_param_list -> empty .
+
+    RPAREN          reduce using rule 14 (opt_param_list -> empty .)
+
+
+state 40
+
+    (16) param_list -> INT . IDENTIFIER
+
+    IDENTIFIER      shift and go to state 51
+
+
+state 41
+
+    (17) repeat_statement -> REPEAT LPAREN var_decl expression . SEMICOLON increment RPAREN LBRACE statement_list RBRACE
+    (25) expression -> expression . PLUS expression
+    (26) expression -> expression . MINUS expression
+    (27) expression -> expression . MORE expression
+    (28) expression -> expression . LESS expression
+
+    SEMICOLON       shift and go to state 52
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    MORE            shift and go to state 33
+    LESS            shift and go to state 34
+
+
+state 42
+
+    (20) if_statement -> IF LPAREN expression RPAREN . LBRACE statement_list RBRACE opt_else
+
+    LBRACE          shift and go to state 53
+
+
+state 43
+
+    (25) expression -> expression PLUS expression .
+    (25) expression -> expression . PLUS expression
+    (26) expression -> expression . MINUS expression
+    (27) expression -> expression . MORE expression
+    (28) expression -> expression . LESS expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for MORE resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+    SEMICOLON       reduce using rule 25 (expression -> expression PLUS expression .)
+    RPAREN          reduce using rule 25 (expression -> expression PLUS expression .)
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    MORE            shift and go to state 33
+    LESS            shift and go to state 34
+
+  ! PLUS            [ reduce using rule 25 (expression -> expression PLUS expression .) ]
+  ! MINUS           [ reduce using rule 25 (expression -> expression PLUS expression .) ]
+  ! MORE            [ reduce using rule 25 (expression -> expression PLUS expression .) ]
+  ! LESS            [ reduce using rule 25 (expression -> expression PLUS expression .) ]
+
+
+state 44
+
+    (26) expression -> expression MINUS expression .
+    (25) expression -> expression . PLUS expression
+    (26) expression -> expression . MINUS expression
+    (27) expression -> expression . MORE expression
+    (28) expression -> expression . LESS expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for MORE resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+    SEMICOLON       reduce using rule 26 (expression -> expression MINUS expression .)
+    RPAREN          reduce using rule 26 (expression -> expression MINUS expression .)
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    MORE            shift and go to state 33
+    LESS            shift and go to state 34
+
+  ! PLUS            [ reduce using rule 26 (expression -> expression MINUS expression .) ]
+  ! MINUS           [ reduce using rule 26 (expression -> expression MINUS expression .) ]
+  ! MORE            [ reduce using rule 26 (expression -> expression MINUS expression .) ]
+  ! LESS            [ reduce using rule 26 (expression -> expression MINUS expression .) ]
+
+
+state 45
+
+    (27) expression -> expression MORE expression .
+    (25) expression -> expression . PLUS expression
+    (26) expression -> expression . MINUS expression
+    (27) expression -> expression . MORE expression
+    (28) expression -> expression . LESS expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for MORE resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+    SEMICOLON       reduce using rule 27 (expression -> expression MORE expression .)
+    RPAREN          reduce using rule 27 (expression -> expression MORE expression .)
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    MORE            shift and go to state 33
+    LESS            shift and go to state 34
+
+  ! PLUS            [ reduce using rule 27 (expression -> expression MORE expression .) ]
+  ! MINUS           [ reduce using rule 27 (expression -> expression MORE expression .) ]
+  ! MORE            [ reduce using rule 27 (expression -> expression MORE expression .) ]
+  ! LESS            [ reduce using rule 27 (expression -> expression MORE expression .) ]
+
+
+state 46
+
+    (28) expression -> expression LESS expression .
+    (25) expression -> expression . PLUS expression
+    (26) expression -> expression . MINUS expression
+    (27) expression -> expression . MORE expression
+    (28) expression -> expression . LESS expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for MORE resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+    SEMICOLON       reduce using rule 28 (expression -> expression LESS expression .)
+    RPAREN          reduce using rule 28 (expression -> expression LESS expression .)
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    MORE            shift and go to state 33
+    LESS            shift and go to state 34
+
+  ! PLUS            [ reduce using rule 28 (expression -> expression LESS expression .) ]
+  ! MINUS           [ reduce using rule 28 (expression -> expression LESS expression .) ]
+  ! MORE            [ reduce using rule 28 (expression -> expression LESS expression .) ]
+  ! LESS            [ reduce using rule 28 (expression -> expression LESS expression .) ]
+
+
+state 47
+
+    (10) var_decl -> INT IDENTIFIER EQUALS expression SEMICOLON .
+
+    INT             reduce using rule 10 (var_decl -> INT IDENTIFIER EQUALS expression SEMICOLON .)
+    ECHO            reduce using rule 10 (var_decl -> INT IDENTIFIER EQUALS expression SEMICOLON .)
+    FUNC            reduce using rule 10 (var_decl -> INT IDENTIFIER EQUALS expression SEMICOLON .)
+    REPEAT          reduce using rule 10 (var_decl -> INT IDENTIFIER EQUALS expression SEMICOLON .)
+    IF              reduce using rule 10 (var_decl -> INT IDENTIFIER EQUALS expression SEMICOLON .)
+    RETURN          reduce using rule 10 (var_decl -> INT IDENTIFIER EQUALS expression SEMICOLON .)
+    $end            reduce using rule 10 (var_decl -> INT IDENTIFIER EQUALS expression SEMICOLON .)
+    NUMBER          reduce using rule 10 (var_decl -> INT IDENTIFIER EQUALS expression SEMICOLON .)
+    IDENTIFIER      reduce using rule 10 (var_decl -> INT IDENTIFIER EQUALS expression SEMICOLON .)
+    RBRACE          reduce using rule 10 (var_decl -> INT IDENTIFIER EQUALS expression SEMICOLON .)
+
+
+state 48
+
+    (11) echo_statement -> ECHO LPAREN expression RPAREN SEMICOLON .
+
+    INT             reduce using rule 11 (echo_statement -> ECHO LPAREN expression RPAREN SEMICOLON .)
+    ECHO            reduce using rule 11 (echo_statement -> ECHO LPAREN expression RPAREN SEMICOLON .)
+    FUNC            reduce using rule 11 (echo_statement -> ECHO LPAREN expression RPAREN SEMICOLON .)
+    REPEAT          reduce using rule 11 (echo_statement -> ECHO LPAREN expression RPAREN SEMICOLON .)
+    IF              reduce using rule 11 (echo_statement -> ECHO LPAREN expression RPAREN SEMICOLON .)
+    RETURN          reduce using rule 11 (echo_statement -> ECHO LPAREN expression RPAREN SEMICOLON .)
+    $end            reduce using rule 11 (echo_statement -> ECHO LPAREN expression RPAREN SEMICOLON .)
+    RBRACE          reduce using rule 11 (echo_statement -> ECHO LPAREN expression RPAREN SEMICOLON .)
+
+
+state 49
+
+    (12) function_decl -> FUNC IDENTIFIER LPAREN opt_param_list RPAREN . LBRACE statement_list RBRACE
+
+    LBRACE          shift and go to state 54
+
+
+state 50
+
+    (15) param_list -> param_list COMMA . INT IDENTIFIER
+
+    INT             shift and go to state 55
+
+
+state 51
+
+    (16) param_list -> INT IDENTIFIER .
+
+    COMMA           reduce using rule 16 (param_list -> INT IDENTIFIER .)
+    RPAREN          reduce using rule 16 (param_list -> INT IDENTIFIER .)
+
+
+state 52
+
+    (17) repeat_statement -> REPEAT LPAREN var_decl expression SEMICOLON . increment RPAREN LBRACE statement_list RBRACE
+    (19) increment -> . IDENTIFIER PLUS PLUS SEMICOLON
+
+    IDENTIFIER      shift and go to state 57
+
+    increment                      shift and go to state 56
+
+state 53
+
+    (20) if_statement -> IF LPAREN expression RPAREN LBRACE . statement_list RBRACE opt_else
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (4) statement -> . var_decl
+    (5) statement -> . echo_statement
+    (6) statement -> . function_decl
+    (7) statement -> . repeat_statement
+    (8) statement -> . if_statement
+    (9) statement -> . return_statement
+    (10) var_decl -> . INT IDENTIFIER EQUALS expression SEMICOLON
+    (11) echo_statement -> . ECHO LPAREN expression RPAREN SEMICOLON
+    (12) function_decl -> . FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE
+    (17) repeat_statement -> . REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE
+    (20) if_statement -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else
+    (23) return_statement -> . RETURN expression SEMICOLON
+
+    INT             shift and go to state 10
+    ECHO            shift and go to state 11
+    FUNC            shift and go to state 12
+    REPEAT          shift and go to state 13
+    IF              shift and go to state 14
+    RETURN          shift and go to state 15
+
+    statement_list                 shift and go to state 58
+    statement                      shift and go to state 3
+    var_decl                       shift and go to state 4
+    echo_statement                 shift and go to state 5
+    function_decl                  shift and go to state 6
+    repeat_statement               shift and go to state 7
+    if_statement                   shift and go to state 8
+    return_statement               shift and go to state 9
+
+state 54
+
+    (12) function_decl -> FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE . statement_list RBRACE
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (4) statement -> . var_decl
+    (5) statement -> . echo_statement
+    (6) statement -> . function_decl
+    (7) statement -> . repeat_statement
+    (8) statement -> . if_statement
+    (9) statement -> . return_statement
+    (10) var_decl -> . INT IDENTIFIER EQUALS expression SEMICOLON
+    (11) echo_statement -> . ECHO LPAREN expression RPAREN SEMICOLON
+    (12) function_decl -> . FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE
+    (17) repeat_statement -> . REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE
+    (20) if_statement -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else
+    (23) return_statement -> . RETURN expression SEMICOLON
+
+    INT             shift and go to state 10
+    ECHO            shift and go to state 11
+    FUNC            shift and go to state 12
+    REPEAT          shift and go to state 13
+    IF              shift and go to state 14
+    RETURN          shift and go to state 15
+
+    statement_list                 shift and go to state 59
+    statement                      shift and go to state 3
+    var_decl                       shift and go to state 4
+    echo_statement                 shift and go to state 5
+    function_decl                  shift and go to state 6
+    repeat_statement               shift and go to state 7
+    if_statement                   shift and go to state 8
+    return_statement               shift and go to state 9
+
+state 55
+
+    (15) param_list -> param_list COMMA INT . IDENTIFIER
+
+    IDENTIFIER      shift and go to state 60
+
+
+state 56
+
+    (17) repeat_statement -> REPEAT LPAREN var_decl expression SEMICOLON increment . RPAREN LBRACE statement_list RBRACE
+
+    RPAREN          shift and go to state 61
+
+
+state 57
+
+    (19) increment -> IDENTIFIER . PLUS PLUS SEMICOLON
+
+    PLUS            shift and go to state 62
+
+
+state 58
+
+    (20) if_statement -> IF LPAREN expression RPAREN LBRACE statement_list . RBRACE opt_else
+    (2) statement_list -> statement_list . statement
+    (4) statement -> . var_decl
+    (5) statement -> . echo_statement
+    (6) statement -> . function_decl
+    (7) statement -> . repeat_statement
+    (8) statement -> . if_statement
+    (9) statement -> . return_statement
+    (10) var_decl -> . INT IDENTIFIER EQUALS expression SEMICOLON
+    (11) echo_statement -> . ECHO LPAREN expression RPAREN SEMICOLON
+    (12) function_decl -> . FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE
+    (17) repeat_statement -> . REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE
+    (20) if_statement -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else
+    (23) return_statement -> . RETURN expression SEMICOLON
+
+    RBRACE          shift and go to state 63
+    INT             shift and go to state 10
+    ECHO            shift and go to state 11
+    FUNC            shift and go to state 12
+    REPEAT          shift and go to state 13
+    IF              shift and go to state 14
+    RETURN          shift and go to state 15
+
+    statement                      shift and go to state 16
+    var_decl                       shift and go to state 4
+    echo_statement                 shift and go to state 5
+    function_decl                  shift and go to state 6
+    repeat_statement               shift and go to state 7
+    if_statement                   shift and go to state 8
+    return_statement               shift and go to state 9
+
+state 59
+
+    (12) function_decl -> FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list . RBRACE
+    (2) statement_list -> statement_list . statement
+    (4) statement -> . var_decl
+    (5) statement -> . echo_statement
+    (6) statement -> . function_decl
+    (7) statement -> . repeat_statement
+    (8) statement -> . if_statement
+    (9) statement -> . return_statement
+    (10) var_decl -> . INT IDENTIFIER EQUALS expression SEMICOLON
+    (11) echo_statement -> . ECHO LPAREN expression RPAREN SEMICOLON
+    (12) function_decl -> . FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE
+    (17) repeat_statement -> . REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE
+    (20) if_statement -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else
+    (23) return_statement -> . RETURN expression SEMICOLON
+
+    RBRACE          shift and go to state 64
+    INT             shift and go to state 10
+    ECHO            shift and go to state 11
+    FUNC            shift and go to state 12
+    REPEAT          shift and go to state 13
+    IF              shift and go to state 14
+    RETURN          shift and go to state 15
+
+    statement                      shift and go to state 16
+    var_decl                       shift and go to state 4
+    echo_statement                 shift and go to state 5
+    function_decl                  shift and go to state 6
+    repeat_statement               shift and go to state 7
+    if_statement                   shift and go to state 8
+    return_statement               shift and go to state 9
+
+state 60
+
+    (15) param_list -> param_list COMMA INT IDENTIFIER .
+
+    COMMA           reduce using rule 15 (param_list -> param_list COMMA INT IDENTIFIER .)
+    RPAREN          reduce using rule 15 (param_list -> param_list COMMA INT IDENTIFIER .)
+
+
+state 61
+
+    (17) repeat_statement -> REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN . LBRACE statement_list RBRACE
+
+    LBRACE          shift and go to state 65
+
+
+state 62
+
+    (19) increment -> IDENTIFIER PLUS . PLUS SEMICOLON
+
+    PLUS            shift and go to state 66
+
+
+state 63
+
+    (20) if_statement -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE . opt_else
+    (21) opt_else -> . ELSE LBRACE statement_list RBRACE
+    (22) opt_else -> . empty
+    (24) empty -> .
+
+    ELSE            shift and go to state 68
+    INT             reduce using rule 24 (empty -> .)
+    ECHO            reduce using rule 24 (empty -> .)
+    FUNC            reduce using rule 24 (empty -> .)
+    REPEAT          reduce using rule 24 (empty -> .)
+    IF              reduce using rule 24 (empty -> .)
+    RETURN          reduce using rule 24 (empty -> .)
+    $end            reduce using rule 24 (empty -> .)
+    RBRACE          reduce using rule 24 (empty -> .)
+
+    opt_else                       shift and go to state 67
+    empty                          shift and go to state 69
+
+state 64
+
+    (12) function_decl -> FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE .
+
+    INT             reduce using rule 12 (function_decl -> FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE .)
+    ECHO            reduce using rule 12 (function_decl -> FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE .)
+    FUNC            reduce using rule 12 (function_decl -> FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE .)
+    REPEAT          reduce using rule 12 (function_decl -> FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE .)
+    IF              reduce using rule 12 (function_decl -> FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE .)
+    RETURN          reduce using rule 12 (function_decl -> FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE .)
+    $end            reduce using rule 12 (function_decl -> FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE .)
+    RBRACE          reduce using rule 12 (function_decl -> FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE .)
+
+
+state 65
+
+    (17) repeat_statement -> REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE . statement_list RBRACE
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (4) statement -> . var_decl
+    (5) statement -> . echo_statement
+    (6) statement -> . function_decl
+    (7) statement -> . repeat_statement
+    (8) statement -> . if_statement
+    (9) statement -> . return_statement
+    (10) var_decl -> . INT IDENTIFIER EQUALS expression SEMICOLON
+    (11) echo_statement -> . ECHO LPAREN expression RPAREN SEMICOLON
+    (12) function_decl -> . FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE
+    (17) repeat_statement -> . REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE
+    (20) if_statement -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else
+    (23) return_statement -> . RETURN expression SEMICOLON
+
+    INT             shift and go to state 10
+    ECHO            shift and go to state 11
+    FUNC            shift and go to state 12
+    REPEAT          shift and go to state 13
+    IF              shift and go to state 14
+    RETURN          shift and go to state 15
+
+    var_decl                       shift and go to state 4
+    statement_list                 shift and go to state 70
+    statement                      shift and go to state 3
+    echo_statement                 shift and go to state 5
+    function_decl                  shift and go to state 6
+    repeat_statement               shift and go to state 7
+    if_statement                   shift and go to state 8
+    return_statement               shift and go to state 9
+
+state 66
+
+    (19) increment -> IDENTIFIER PLUS PLUS . SEMICOLON
+
+    SEMICOLON       shift and go to state 71
+
+
+state 67
+
+    (20) if_statement -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else .
+
+    INT             reduce using rule 20 (if_statement -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else .)
+    ECHO            reduce using rule 20 (if_statement -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else .)
+    FUNC            reduce using rule 20 (if_statement -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else .)
+    REPEAT          reduce using rule 20 (if_statement -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else .)
+    IF              reduce using rule 20 (if_statement -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else .)
+    RETURN          reduce using rule 20 (if_statement -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else .)
+    $end            reduce using rule 20 (if_statement -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else .)
+    RBRACE          reduce using rule 20 (if_statement -> IF LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else .)
+
+
+state 68
+
+    (21) opt_else -> ELSE . LBRACE statement_list RBRACE
+
+    LBRACE          shift and go to state 72
+
+
+state 69
+
+    (22) opt_else -> empty .
+
+    INT             reduce using rule 22 (opt_else -> empty .)
+    ECHO            reduce using rule 22 (opt_else -> empty .)
+    FUNC            reduce using rule 22 (opt_else -> empty .)
+    REPEAT          reduce using rule 22 (opt_else -> empty .)
+    IF              reduce using rule 22 (opt_else -> empty .)
+    RETURN          reduce using rule 22 (opt_else -> empty .)
+    $end            reduce using rule 22 (opt_else -> empty .)
+    RBRACE          reduce using rule 22 (opt_else -> empty .)
+
+
+state 70
+
+    (17) repeat_statement -> REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list . RBRACE
+    (2) statement_list -> statement_list . statement
+    (4) statement -> . var_decl
+    (5) statement -> . echo_statement
+    (6) statement -> . function_decl
+    (7) statement -> . repeat_statement
+    (8) statement -> . if_statement
+    (9) statement -> . return_statement
+    (10) var_decl -> . INT IDENTIFIER EQUALS expression SEMICOLON
+    (11) echo_statement -> . ECHO LPAREN expression RPAREN SEMICOLON
+    (12) function_decl -> . FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE
+    (17) repeat_statement -> . REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE
+    (20) if_statement -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else
+    (23) return_statement -> . RETURN expression SEMICOLON
+
+    RBRACE          shift and go to state 73
+    INT             shift and go to state 10
+    ECHO            shift and go to state 11
+    FUNC            shift and go to state 12
+    REPEAT          shift and go to state 13
+    IF              shift and go to state 14
+    RETURN          shift and go to state 15
+
+    var_decl                       shift and go to state 4
+    statement                      shift and go to state 16
+    echo_statement                 shift and go to state 5
+    function_decl                  shift and go to state 6
+    repeat_statement               shift and go to state 7
+    if_statement                   shift and go to state 8
+    return_statement               shift and go to state 9
+
+state 71
+
+    (19) increment -> IDENTIFIER PLUS PLUS SEMICOLON .
+
+    RPAREN          reduce using rule 19 (increment -> IDENTIFIER PLUS PLUS SEMICOLON .)
+
+
+state 72
+
+    (21) opt_else -> ELSE LBRACE . statement_list RBRACE
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (4) statement -> . var_decl
+    (5) statement -> . echo_statement
+    (6) statement -> . function_decl
+    (7) statement -> . repeat_statement
+    (8) statement -> . if_statement
+    (9) statement -> . return_statement
+    (10) var_decl -> . INT IDENTIFIER EQUALS expression SEMICOLON
+    (11) echo_statement -> . ECHO LPAREN expression RPAREN SEMICOLON
+    (12) function_decl -> . FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE
+    (17) repeat_statement -> . REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE
+    (20) if_statement -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else
+    (23) return_statement -> . RETURN expression SEMICOLON
+
+    INT             shift and go to state 10
+    ECHO            shift and go to state 11
+    FUNC            shift and go to state 12
+    REPEAT          shift and go to state 13
+    IF              shift and go to state 14
+    RETURN          shift and go to state 15
+
+    statement_list                 shift and go to state 74
+    statement                      shift and go to state 3
+    var_decl                       shift and go to state 4
+    echo_statement                 shift and go to state 5
+    function_decl                  shift and go to state 6
+    repeat_statement               shift and go to state 7
+    if_statement                   shift and go to state 8
+    return_statement               shift and go to state 9
+
+state 73
+
+    (17) repeat_statement -> REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE .
+
+    INT             reduce using rule 17 (repeat_statement -> REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE .)
+    ECHO            reduce using rule 17 (repeat_statement -> REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE .)
+    FUNC            reduce using rule 17 (repeat_statement -> REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE .)
+    REPEAT          reduce using rule 17 (repeat_statement -> REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE .)
+    IF              reduce using rule 17 (repeat_statement -> REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE .)
+    RETURN          reduce using rule 17 (repeat_statement -> REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE .)
+    $end            reduce using rule 17 (repeat_statement -> REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE .)
+    RBRACE          reduce using rule 17 (repeat_statement -> REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE .)
+
+
+state 74
+
+    (21) opt_else -> ELSE LBRACE statement_list . RBRACE
+    (2) statement_list -> statement_list . statement
+    (4) statement -> . var_decl
+    (5) statement -> . echo_statement
+    (6) statement -> . function_decl
+    (7) statement -> . repeat_statement
+    (8) statement -> . if_statement
+    (9) statement -> . return_statement
+    (10) var_decl -> . INT IDENTIFIER EQUALS expression SEMICOLON
+    (11) echo_statement -> . ECHO LPAREN expression RPAREN SEMICOLON
+    (12) function_decl -> . FUNC IDENTIFIER LPAREN opt_param_list RPAREN LBRACE statement_list RBRACE
+    (17) repeat_statement -> . REPEAT LPAREN var_decl expression SEMICOLON increment RPAREN LBRACE statement_list RBRACE
+    (20) if_statement -> . IF LPAREN expression RPAREN LBRACE statement_list RBRACE opt_else
+    (23) return_statement -> . RETURN expression SEMICOLON
+
+    RBRACE          shift and go to state 75
+    INT             shift and go to state 10
+    ECHO            shift and go to state 11
+    FUNC            shift and go to state 12
+    REPEAT          shift and go to state 13
+    IF              shift and go to state 14
+    RETURN          shift and go to state 15
+
+    statement                      shift and go to state 16
+    var_decl                       shift and go to state 4
+    echo_statement                 shift and go to state 5
+    function_decl                  shift and go to state 6
+    repeat_statement               shift and go to state 7
+    if_statement                   shift and go to state 8
+    return_statement               shift and go to state 9
+
+state 75
+
+    (21) opt_else -> ELSE LBRACE statement_list RBRACE .
+
+    INT             reduce using rule 21 (opt_else -> ELSE LBRACE statement_list RBRACE .)
+    ECHO            reduce using rule 21 (opt_else -> ELSE LBRACE statement_list RBRACE .)
+    FUNC            reduce using rule 21 (opt_else -> ELSE LBRACE statement_list RBRACE .)
+    REPEAT          reduce using rule 21 (opt_else -> ELSE LBRACE statement_list RBRACE .)
+    IF              reduce using rule 21 (opt_else -> ELSE LBRACE statement_list RBRACE .)
+    RETURN          reduce using rule 21 (opt_else -> ELSE LBRACE statement_list RBRACE .)
+    $end            reduce using rule 21 (opt_else -> ELSE LBRACE statement_list RBRACE .)
+    RBRACE          reduce using rule 21 (opt_else -> ELSE LBRACE statement_list RBRACE .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for PLUS in state 43 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 43 resolved as shift
+WARNING: shift/reduce conflict for MORE in state 43 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 43 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 44 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 44 resolved as shift
+WARNING: shift/reduce conflict for MORE in state 44 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 44 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 45 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 45 resolved as shift
+WARNING: shift/reduce conflict for MORE in state 45 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 45 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 46 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 46 resolved as shift
+WARNING: shift/reduce conflict for MORE in state 46 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 46 resolved as shift
